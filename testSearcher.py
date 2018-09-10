@@ -1,12 +1,15 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 """
 " ip2region python seacher client module
 "
 " Autho: koma<komazhang@foxmail.com>
 " Date : 2015-11-06
 """
-import struct, sys, os, time
+import sys
+import os
+import time
 from ip2Region import Ip2Region
+
 
 def testSearch():
     """
@@ -15,16 +18,16 @@ def testSearch():
     llen = len(sys.argv)
 
     if llen < 2:
-        print "Usage: python testSearcher.py [ip2region db file] [alrogrithm]"
-        print "Algorithm: binary or b-tree"
+        print("Usage: python testSearcher.py [ip2region db file] [alrogrithm]")
+        print("Algorithm: binary or b-tree")
         return 0
 
-    dbFile    = sys.argv[1]
-    method    = 1
+    dbFile = sys.argv[1]
+    method = 1
     algorithm = "b-tree"
-    
+
     if (not os.path.isfile(dbFile)) or (not os.path.exists(dbFile)):
-        print "[Error]: Specified db file is not exists."
+        print("[Error]: Specified db file is not exists.")
         return 0
 
     if llen > 2:
@@ -34,29 +37,29 @@ def testSearch():
         elif algorithm == "memory":
             method = 3
 
-    print "initializing %s..." % (algorithm)
-    print "+----------------------------------+"
-    print "| ip2region test program           |"
-    print "| Author: chenxin619315@gmail.com. |"
-    print "| Type 'quit' to exit program      |"
-    print "+----------------------------------+"
+    print("initializing %s..." % algorithm)
+    print("+----------------------------------+")
+    print("| ip2region test program           |")
+    print("| Author: chenxin619315@gmail.com. |")
+    print("| Type 'quit' or 'exit' to exit program      |")
+    print("+----------------------------------+")
 
-    searcher = Ip2Region(dbFile);
+    searcher = Ip2Region(dbFile)
 
     while True:
-        line = raw_input("ip2region>> ")
+        line = input("ip2region>> ")
         line = line.strip()
 
         if line == "":
-            print "[Error]: Invalid ip address."
+            print("[Error]: Invalid ip address.")
             continue
 
-        if line == "quit":
-            print "[Info]: Thanks for your use, Bye."
+        if line == "quit" or line == "exit":
+            print("[Info]: Thanks for your use, Bye.")
             break
 
         if not searcher.isip(line):
-            print "[Error]: Invalid ip address."
+            print("[Error]: Invalid ip address.")
             continue
 
         sTime = time.time() * 1000
@@ -69,11 +72,12 @@ def testSearch():
         eTime = time.time() * 1000
 
         if isinstance(data, dict):
-            print "%s|%s in %f millseconds" % (data["city_id"], data["region"], eTime-sTime)
+            print("%s|%s in %f millseconds" % (data["city_id"], data["region"].decode('utf-8'), eTime - sTime))
         else:
-            print "[Error]: ", data
+            print("[Error]: ", data)
 
     searcher.close()
+
 
 if __name__ == "__main__":
     testSearch()

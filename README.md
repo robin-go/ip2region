@@ -16,9 +16,7 @@ ip2region - 最自由的ip地址查询库，ip到地区的映射库，提供Bina
 
 生成的数据库文件ip2region.db只有1.5M（1.2版本前是3.5M）
 
-### 4. 多查询客户端的支持，0.0x毫秒级别的查询
-
-已经集成的客户端有：java, C#, php, c, python，nodejs，php扩展(支持linux, php5, php7版本已支持)，golang。
+### 4. 0.0x毫秒级别的查询
 
     提供了两种查询算法，响应时间如下：
     客户端/binary算法/b-tree算法/Memory算法：
@@ -44,28 +42,7 @@ Install-Package IP2Region
 ```
 
 ### 5. 测试程序：
-C# 和 Node.js，请具体参考文件夹中README.md 说明。
 
-java: 
-```shell
-cd binding/java
-ant all
-java -jar ip2region-{version}.jar ./data/ip2region.db
-```
-
-php: 
-```shell
-php binding/php/testSearcher.php ./data/ip2region.db
-```
-
-c: 
-```shell
-cd binding/c/
-gcc -g -O2 testSearcher.c ip2region.c
-./a.out ../../data/ip2region.db
-```
-
-python: 
 ```shell
 python binding/python/testSearcher.py ./data/ip2region.db
 ```
