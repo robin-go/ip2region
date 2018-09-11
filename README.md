@@ -16,35 +16,29 @@ ip2region - 最自由的ip地址查询库，ip到地区的映射库，提供Bina
 
 生成的数据库文件ip2region.db只有1.5M（1.2版本前是3.5M）
 
-### 4. 0.0x毫秒级别的查询
+### 4. api接口：
 
-    提供了两种查询算法，响应时间如下：
-    客户端/binary算法/b-tree算法/Memory算法：
-    c#/0.x毫秒/0.x毫秒/0.x毫秒
-    java/0.x毫秒/0.x毫秒/0.1x毫秒 (使用RandomAccessFile)
-    php/0.x毫秒/0.1x毫秒/0.1x毫秒
-    c/0.0x毫秒/0.0x毫秒/0.00x毫秒(b-tree算法基本稳定在0.02x毫秒级别)
-    python/0.x毫秒/0.1x毫秒/未知
-
-任何客户端b-tree都比binary算法快，当然Memory算法固然是最快的！
-
-maven仓库地址：
-```xml
-<dependency>
-    <groupId>org.lionsoul</groupId>
-    <artifactId>ip2region</artifactId>
-    <version>1.7</version>
-</dependency>
-```
-nuget安装命令
+启动：
 ```shell
-Install-Package IP2Region
+python3 query_api.py
+```
+请求方式和参数：  
+```
+GET: /ip2region/<ip>
+```
+返回值:
+```
+{
+    "country": "中国",
+    "province": "北京",
+    "city": "北京市",
+}
 ```
 
 ### 5. 测试程序：
 
 ```shell
-python binding/python/testSearcher.py ./data/ip2region.db
+python3 binding/python/testSearcher.py ./data/ip2region.db
 ```
 
 均会看到如下界面：
