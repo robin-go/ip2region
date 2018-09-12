@@ -12,4 +12,6 @@ __pycache__/
 !dbMaker-*.jar
 
 # logs and pidfile:
-logs/*
+*.log
+*.pid
+
