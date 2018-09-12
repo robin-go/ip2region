@@ -1,43 +1,15 @@
-*.class
-*.out
-*.o
-*.pyc
-*~
-META-INF/
+# Python:
+__pycache__/
+*.so
 
-# Binary Files #
+# Ide configurations:
+.idea
+.vscode
+*.swp
+
+# Binary Files:
 *.jar
 !dbMaker-*.jar
 
-# Package Files #
-.settings/
-.classpath
-.project
-
-# vim swp file #
-*.swp
-.idea
-
-# binding
-/binding/java/classes/
-/binding/java/doc/
-/binding/java/target/
-/binding/java/*.jar
-
-/binding/c/testSearcher
-
-# rust
-Cargo.lock
-target
-
-
-# VS ignore cases
-/**/*.sln
-/binding/c#/**/.vs/
-/binding/c#/**/packages
-/binding/c#/**/bin
-/binding/c#/**/obj
-
-# Nodejs
-/binding/nodejs/tests/unitTests/__snapshots__
-/binding/nodejs/coverage
+# logs and pidfile:
+logs/*

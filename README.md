@@ -18,9 +18,13 @@ ip2region - 最自由的ip地址查询库，ip到地区的映射库，提供Bina
 
 ### 4. api接口：
 
-启动：
+启动服务：
 ```shell
-python3 query_api.py
+gunicorn -c gunicorn.conf server:app
+```
+停止服务：
+```shell
+kill `cat logs/gunicorn.pid`
 ```
 请求方式和参数：  
 ```
